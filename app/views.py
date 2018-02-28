@@ -110,6 +110,25 @@ def page_not_found(error):
     """Custom 404 page."""
     return render_template('404.html'), 404
 
+def get_uploaded_images():
+    """create the list of image upload"""
+    rootdir =os.getcwd()
+    file=[]
+    for subdir,dirs, files in os.walk(rootdir + 'app/static/uploads'):
+        print(subdir,dirs, files) 
+        #for file in files:
+            #return os.path.join(subdir, file) 
+            #return subdir
+    #return file
+           
+@app.route('/files')
+def files():
+    """ get list of image uploaded"""
+    if not session.get('logged_in'):
+        abort(401)
+        
+    return render_template('files.html',photo=get_uploaded_images())
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port="8080")
