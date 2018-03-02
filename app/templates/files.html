@@ -3,4 +3,12 @@
 {% block main %}
 <h1 class="page-header">Images</h1>
 <p>{{photo}}</p>
+<script>
+function myFunction() {
+    for files in {{photo}} {
+        <img src="{{url_for('static',filename='{{files}}')}}"></img>
+    }
+}
+</script>
+
 {% endblock %}

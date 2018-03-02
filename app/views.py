@@ -113,13 +113,10 @@ def page_not_found(error):
 def get_uploaded_images():
     """create the list of image upload"""
     rootdir =os.getcwd()
-    file=[]
-    for subdir,dirs, files in os.walk(rootdir + 'app/static/uploads'):
-        print(subdir,dirs, files) 
-        #for file in files:
-            #return os.path.join(subdir, file) 
-            #return subdir
-    #return file
+    fil=[]
+    for subdir,dirs, files in os.walk('./app/static/uploads'):
+        fil+=files 
+    return fil
            
 @app.route('/files')
 def files():
