@@ -113,11 +113,8 @@ def page_not_found(error):
 def get_uploaded_images():
     """create the list of image upload"""
     rootdir =os.getcwd()
-    fil=[]
     for subdir,dirs, files in os.walk('./app/static/uploads'):
-        if files !='.gitkeep':
-            fil+=files 
-    return fil
+        return files
            
 @app.route('/files')
 def files():

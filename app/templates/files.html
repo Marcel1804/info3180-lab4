@@ -2,8 +2,9 @@
 
 {% block main %}
 <h1 class="page-header">Images</h1>
-<p>{{photos}}</p>
 {% for photo in photos %}
-    <img src="{{url_for('static',filename='uploads/'+photo )}}" alt="profile picture" style="width:100px;height:100px;">
+     {% if photo !='.gitkeep' %}
+       <img src="{{url_for('static',filename='uploads/'+photo )}}" alt="profile picture" style="width:200px;height:200px;">
+     {% endif %}
 {% endfor %}
 {% endblock %}
