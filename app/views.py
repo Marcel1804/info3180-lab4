@@ -115,7 +115,8 @@ def get_uploaded_images():
     rootdir =os.getcwd()
     fil=[]
     for subdir,dirs, files in os.walk('./app/static/uploads'):
-        fil+=files 
+        if files !='.gitkeep':
+            fil+=files 
     return fil
            
 @app.route('/files')
@@ -124,7 +125,7 @@ def files():
     if not session.get('logged_in'):
         abort(401)
         
-    return render_template('files.html',photo=get_uploaded_images())
+    return render_template('files.html',photos=get_uploaded_images())
 
 
 if __name__ == '__main__':
